@@ -54,4 +54,6 @@ que mantém o código ao decorrer do tempo. Esse trcho toca na vida útil de um 
 
 # Atividade 4
 
-![Imagem do Bertoti](Engeharia1/Imagens/imagem slides bertoti.png)
+![Imagem do Bertoti](https://github.com/Leti-10/Bertoti/blob/main/Engeharia1/Imagens/imagem%20slides%20bertoti.png)
+
+A imagem faz uma demonstração visual do conceito de MVP, que vem do inglês Minimal Viable Product. A ideia do MVP é de que o programador deve sempre entrgar algo utilizável durante os processos de entrega do projeto, e durante o processo de montagem de seu programa ou sistema, sempre construir versões simplificadas com fins de aprendizado e validação do cliente, sempre em mente resolver o problema proposto pelo cliente. De nada adianta a carcaça de um sistema complexo que é inutilizável e não entrega nenhum tipo de valor para o cliente.
