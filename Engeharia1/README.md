@@ -38,4 +38,20 @@ que mantém o código ao decorrer do tempo. Esse trcho toca na vida útil de um 
 
 # Atividade 3
 
-1. 
+1.
+2.
+3.
+
+
+
+
+
+
+
+
+
+
+
+# Atividade 4
+
+
