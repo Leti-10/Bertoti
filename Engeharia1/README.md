@@ -54,4 +54,4 @@ que mantém o código ao decorrer do tempo. Esse trcho toca na vida útil de um 
 
 # Atividade 4
 
-
+![Imagem do Bertoti](Engeharia1/Imagens/imagem slides bertoti.png)
