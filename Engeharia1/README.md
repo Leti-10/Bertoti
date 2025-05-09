@@ -38,16 +38,9 @@ que mantém o código ao decorrer do tempo. Esse trcho toca na vida útil de um 
 
 # Atividade 3
 
-1.
-2.
-3.
-
-
-
-
-
-
-
+1. Velocidade vs. Consumo de Memória
+2. Facilidade de Manutenção vs. Performance
+3. Segurança vs. Usabilidade
 
 
 
@@ -57,3 +50,143 @@ que mantém o código ao decorrer do tempo. Esse trcho toca na vida útil de um 
 ![Imagem do Bertoti](https://github.com/Leti-10/Bertoti/blob/main/Engeharia1/Imagens/imagem%20slides%20bertoti.png)
 
 A imagem faz uma demonstração visual do conceito de MVP, que vem do inglês Minimal Viable Product. A ideia do MVP é de que o programador deve sempre entrgar algo utilizável durante os processos de entrega do projeto, e durante o processo de montagem de seu programa ou sistema, sempre construir versões simplificadas com fins de aprendizado e validação do cliente, sempre em mente resolver o problema proposto pelo cliente. De nada adianta a carcaça de um sistema complexo que é inutilizável e não entrega nenhum tipo de valor para o cliente.
+
+
+
+
+
+# Atividade 5
+
+## Classe loja
+
+    package org.sputnik;
+
+    import java.util.LinkedList;
+    import java.util.List;
+
+    public class Loja {
+
+    private List<ItemCrochet> itens = new LinkedList<ItemCrochet>();
+    
+    public void addItem(ItemCrochet item) {
+        itens.add(item);
+    }
+
+    public ItemCrochet buscarItemPorNome(String nome) {
+        for (ItemCrochet item : itens) {
+            if (item.getNome().equalsIgnoreCase(nome)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void mostrarQuantidadePorNome(String nome) {
+        ItemCrochet item = buscarItemPorNome(nome);
+        if (item != null) {
+            System.out.println("Item: " + item.getNome() +
+                    " | Quantidade em estoque: " + item.getQuantidade());
+        } else {
+            System.out.println("Item não encontrado.");
+        }
+    }
+
+    public void venderItem(String nome, int quantidade) {
+        for (ItemCrochet item : itens) {
+            if (item.getNome().equalsIgnoreCase(nome)) {
+                if (item.getQuantidade() >= quantidade) {
+                    item.diminuirEstoque(quantidade); // atualiza o estoque
+                    double total = quantidade * item.getPreco();
+                    System.out.println("Venda realizada!");
+                    System.out.println("Item: " + item.getNome());
+                    System.out.println("Quantidade vendida: " + quantidade);
+                    System.out.println("Total: R$ " + total);
+                    System.out.println("Restante no Estoque: " + item.getQuantidade());
+                    return;
+                } else {
+                    System.out.println("Estoque insuficiente para " + nome + ".");
+                    return;
+                }
+            }
+        }
+        System.out.println("Item não encontrado.");
+    }
+
+    }
+
+
+## Classe ItemCrochet
+
+    package org.sputnik;
+
+    public class ItemCrochet {
+
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public ItemCrochet(String nome, double preco, int quantidade){
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void diminuirEstoque(int quantidade) {
+        if (quantidade <= getQuantidade()) {
+            this.quantidade -= quantidade;
+        } else {
+            System.out.println("Estoque insuficiente para a venda.");
+        }
+    }
+
+
+    }
+
+
+## Teste
+
+    import org.junit.Test;
+    import org.sputnik.ItemCrochet;
+    import org.sputnik.Loja;
+    import static org.junit.Assert.assertEquals;
+
+    public class Teste {
+
+    @Test
+    public void test(){
+
+        Loja loja = new Loja();
+        loja.addItem(new ItemCrochet("Agulha 3.0mm", 15.00, 23));
+        loja.addItem(new ItemCrochet("Novelo amigurumi", 18.00, 50));
+        loja.addItem(new ItemCrochet("Agulha de tapeçaria", 2.50, 120));
+
+        loja.venderItem("Agulha de tapeçaria", 5);
+        ItemCrochet item = loja.buscarItemPorNome("Agulha de tapeçaria");
+
+        assertEquals(115, item.getQuantidade());
+    }
+
+    }
+
+   
